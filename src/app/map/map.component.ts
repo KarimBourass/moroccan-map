@@ -37,7 +37,7 @@ export class MapComponent {
     }).addTo(this.map);
 
     // Add a marker for Morocco's capital (Rabat)
-    const rabatMarker = L.marker([34.0209, -6.8416]).addTo(this.map);
-    rabatMarker.bindPopup('Rabat, Morocco').openPopup();
+    const rabatMarker = L.marker([30.4278, -9.5981]).addTo(this.map);
+    rabatMarker.bindPopup('Kamal home').openPopup();
   }
 }
