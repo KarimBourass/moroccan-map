@@ -1,12 +1,9 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { MapComponent } from './map/map.component';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
-  templateUrl: './app.component.html',
-  styleUrl: './app.component.scss'
+  imports: [MapComponent],
+  template: `<app-map />`,
 })
-export class AppComponent {
-  title = 'moroccan-map';
-}
+export class AppComponent {}
