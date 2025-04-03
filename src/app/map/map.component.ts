@@ -26,18 +26,18 @@ export class MapComponent {
   private initMap(): void {
     // Morocco's center coordinates
     const moroccoCenter: L.LatLngExpression = [31.6295, -7.9811];
-
+    
     // Initialize the map
     this.map = L.map(this.mapElement.nativeElement).setView(moroccoCenter, 6);
 
-    // Add OpenStreetMap tiles
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    // Use the local tile server
+    L.tileLayer('http://localhost:8080/tile/{z}/{x}/{y}.png', {
       maxZoom: 19,
       attribution: '© OpenStreetMap contributors',
     }).addTo(this.map);
 
-    // Add a marker for Morocco's capital (Rabat)
-    const rabatMarker = L.marker([30.4278, -9.5981]).addTo(this.map);
-    rabatMarker.bindPopup('Kamal home').openPopup();
+    // Add a marker for your location
+    const homeMarker = L.marker([30.4278, -9.5981]).addTo(this.map);
+    homeMarker.bindPopup('Kamal home').openPopup();
   }
 }
