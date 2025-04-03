@@ -1,0 +1,50 @@
+version: '3'
+
+services:
+  postgres:
+    image: postgis/postgis:15-3.3
+    environment:
+      - POSTGRES_USER=osm
+      - POSTGRES_PASSWORD=osm
+      - POSTGRES_DB=osm
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - osm-network
+
+  osm-importer:
+    image: overv/openstreetmap-tile-server:latest
+    depends_on:
+      - postgres
+    volumes:
+      - ./morocco-latest.osm.pbf:/data/region.osm.pbf
+    command: import
+    environment:
+      - POSTGRES_USER=osm
+      - POSTGRES_PASSWORD=osm
+      - POSTGRES_DB=osm
+      - POSTGRES_HOST=postgres
+    networks:
+      - osm-network
+
+  tile-server:
+    image: overv/openstreetmap-tile-server:latest
+    depends_on:
+      - postgres
+    ports:
+      - "8080:80"
+    command: run
+    environment:
+      - POSTGRES_USER=osm
+      - POSTGRES_PASSWORD=osm
+      - POSTGRES_DB=osm
+      - POSTGRES_HOST=postgres
+    networks:
+      - osm-network
+
+networks:
+  osm-network:
+    driver: bridge
+
+volumes:
+  postgres_data:
