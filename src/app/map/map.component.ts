@@ -22,7 +22,7 @@ export class MapComponent implements OnInit {
 
 
     map.on('load', () => {
-      // Apply the filter to hide borders with disputed_name 'WesternSaharaclaimwithMorocco'
+      // Apply the filter to hide specific borders
       map.setFilter('admin_sub', ['!=', 'disputed_name', 'WesternSaharaclaimwithMorocco']);
       map.setFilter('admin_country', ['!=', 'disputed_name', 'WesternSaharaclaimwithMorocco']);
     });
