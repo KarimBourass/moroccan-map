@@ -2,8 +2,6 @@ version: '3'
 services:
   tileserver:
     image: maptiler/tileserver-gl:latest
-    # or try this alternative image
-    # image: klokantech/tileserver-gl
     ports:
       - "8080:8080"
     volumes:
