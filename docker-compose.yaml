@@ -1,4 +1,4 @@
-version: '3'
+version: "3"
 services:
   tileserver:
     image: maptiler/tileserver-gl:latest
@@ -7,4 +7,4 @@ services:
     volumes:
       - ./data:/data
     environment:
-      - ALLOW_CORS=true 
+      - ALLOW_CORS=true
