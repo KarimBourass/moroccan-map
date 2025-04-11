@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import maplibregl from 'maplibre-gl';
-import {MOROCCO_GEO_BOUNDARIES} from '../../assets/morocco-geoBoundaries';
+import { MOROCCO_GEO_BOUNDARIES } from '../../assets/morocco-geoBoundaries';
 
 @Component({
   selector: 'app-map',
@@ -23,7 +23,7 @@ export class MapComponent implements OnInit {
     map.on('load', () => {
       const boundaryLayers = ['admin_country'];
 
-      boundaryLayers.forEach(layerId => {
+      boundaryLayers.forEach((layerId) => {
         if (map.getLayer(layerId)) {
           map.setLayoutProperty(layerId, 'visibility', 'none');
         }
@@ -31,7 +31,7 @@ export class MapComponent implements OnInit {
 
       map.addSource('moroccoBorder', {
         type: 'geojson',
-        data: MOROCCO_GEO_BOUNDARIES
+        data: MOROCCO_GEO_BOUNDARIES,
       });
 
       map.addLayer({
@@ -40,10 +40,9 @@ export class MapComponent implements OnInit {
         source: 'moroccoBorder',
         paint: {
           'line-color': '#727575',
-          'line-width': 1
-        }
+          'line-width': 1,
+        },
       });
     });
-
   }
 }
