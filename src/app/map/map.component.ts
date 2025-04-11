@@ -40,7 +40,7 @@ export class MapComponent implements OnInit {
         source: 'moroccoBorder',
         paint: {
           'line-color': '#727575',
-          'line-width': 0.8
+          'line-width': 1
         }
       });
     });
